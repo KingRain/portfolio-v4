@@ -13,3 +13,8 @@ export interface I_Education {
     ending_date: string,
     institute_name: string,
 }
+
+export interface ApiResponse {
+    success: boolean;
+    message: string;
+};

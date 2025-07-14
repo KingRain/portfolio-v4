@@ -6,7 +6,7 @@ const AboutmeSection = () => {
     <section className="bg-transparent py-12 flex justify-center items-center">
       <div className="w-full max-w-5xl px-4">
         <h2
-          className={`text-2xl font-bold mb-4 ${bricolage_grotesque} text-primary dark:text-primary-dark text-center`}
+          className={`text-2xl font-bold mb-2 sm:mb-4 ${bricolage_grotesque} text-primary dark:text-primary-dark text-center`}
         >
           About Me
         </h2>

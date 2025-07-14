@@ -32,8 +32,21 @@ export function HeroSection() {
             </div>
           </div>
           <div className="flex flex-row gap-2 justify-center mt-6 md:gap-7 w-full">
-            <RainbowButton className="z-20 text-sm px-4 py-1.5">Book a meet</RainbowButton>
-            <RainbowButton className="z-20 text-sm px-4 py-1.5">Get in Touch</RainbowButton>
+            <RainbowButton 
+              className="z-20 text-sm px-4 py-1.5" 
+              onClick={() => window.open("https://calendly.com/samjoe55555", "_blank")}
+            >
+              Book a meet
+            </RainbowButton>
+            <RainbowButton 
+              className="z-20 text-sm px-4 py-1.5" 
+              onClick={() => window.scrollTo({
+              top: document.body.scrollHeight,
+              behavior: 'smooth'
+              })}
+            >
+              Get in Touch
+            </RainbowButton>
           </div>
         </div>
       </div>

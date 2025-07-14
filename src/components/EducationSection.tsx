@@ -12,7 +12,7 @@ const EducationSection: React.FC = () => {
   return (
     <div className="w-5xl max-lg:w-full max-lg:px-20 max-sm:w-full max-sm:px-5 flex flex-col items-center mt-4 pb-8 mx-auto">
       <span className="mb-3">
-        <h2 className={`text-2xl font-bold text-center ${bricolage_grotesque}`}>
+        <h2 className={`text-2xl font-bold mb-2 sm:mb-4 ${bricolage_grotesque} text-primary dark:text-primary-dark text-center`}>
           Education
         </h2>
       </span>
