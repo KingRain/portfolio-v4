@@ -141,31 +141,31 @@ export default function HighlightsSection() {
                 </div>
               </div>
             </div>
-            <div className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto flex justify-between flex-col sm:flex">
+            <div className="hidden sm:flex border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto justify-between flex-col">
               <Layers className="w-8 h-8 stroke-1" />
               <div className="flex flex-col">
-                <h3 className={`text-xl tracking-tight ${bricolage_grotesque}`}>
-                  GitHub Contributions
-                </h3>
-                <div className="mt-2 overflow-hidden">
-                  <Link
-                    href={"https://github.com/Kingrain"}
-                    target="_blank"
-                    className="block overflow-hidden"
-                  >
-                    <GithubGraph
-                      username="Kingrain"
-                      blockMargin={2}
-                      colorPallete={[
-                        "#e0f2fe", // lightest blue
-                        "#bae6fd",
-                        "#7dd3fc",
-                        "#38bdf8",
-                        "#0ea5e9", // darkest blue
-                      ]}
-                    />
-                  </Link>
-                </div>
+              <h3 className={`text-xl tracking-tight ${bricolage_grotesque}`}>
+                GitHub Contributions
+              </h3>
+              <div className="mt-2 overflow-hidden">
+                <Link
+                href={"https://github.com/Kingrain"}
+                target="_blank"
+                className="block overflow-hidden"
+                >
+                <GithubGraph
+                  username="Kingrain"
+                  blockMargin={2}
+                  colorPallete={[
+                  "#e0f2fe", // lightest blue
+                  "#bae6fd",
+                  "#7dd3fc",
+                  "#38bdf8",
+                  "#0ea5e9", // darkest blue
+                  ]}
+                />
+                </Link>
+              </div>
               </div>
             </div>
           </div>
