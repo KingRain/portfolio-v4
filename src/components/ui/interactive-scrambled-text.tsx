@@ -70,7 +70,7 @@ const InteractiveScrambledText: FC<InteractiveScrambledTextProps> = ({
             overwrite: true,
             duration: duration * (1 - distance / radius), // Effect is faster closer to the center
             scrambleText: {
-              text: char.dataset.content || "",
+              text: (char as HTMLElement).dataset.content || "",
               chars: scrambleChars,
               speed,
             },

@@ -141,7 +141,7 @@ export default function HighlightsSection() {
                 </div>
               </div>
             </div>
-            <div className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto flex justify-between flex-col hidden sm:flex">
+            <div className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto flex justify-between flex-col sm:flex">
               <Layers className="w-8 h-8 stroke-1" />
               <div className="flex flex-col">
                 <h3 className={`text-xl tracking-tight ${bricolage_grotesque}`}>
