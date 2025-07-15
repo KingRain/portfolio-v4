@@ -20,34 +20,43 @@ export default function HighlightsSection() {
               </h2>
             </div>
           </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
             <div className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md h-full lg:col-span-2 p-6 aspect-square lg:aspect-auto flex justify-between flex-col relative overflow-hidden">
               <Code className="w-8 h-8 stroke-1" />
               <div className="flex flex-col">
-              <h3 className={`text-xl tracking-tight ${bricolage_grotesque}`}>
-              Recent Hackathon Wins
-              </h3>
-              <div className="mt-3 bg-gray-100/10 dark:bg-white/5 backdrop-blur-md rounded-lg p-4 text-black dark:text-white">
-              <div className="flex items-center gap-2 mb-2">
-              <h4 className={`text-base font-semibold ${bricolage_grotesque}`}>Hack-a-Addict • 1st Place</h4>
-              </div>
-              <p className={`text-sm text-gray-800 dark:text-gray-200 ${bricolage_grotesque}`}>
-              Our team <span className="font-medium">Drag-on</span> (Noel, Basil & me) secured the top spot out of 50+ teams,
-              winning <span className="font-semibold">₹1.5L</span> at a national hackathon hosted by IEEE & Lions Club.
-              We built <span className="font-semibold">DragApp</span> – a comprehensive drug abuse prevention tool.
-              </p>
-                <div className="flex items-center gap-2 mt-3">
-                <a 
-                  href="https://play.google.com/store/apps/details?id=org.lionsclub.dragapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ShinyButton className="text-xs sm:text-sm h-8 sm:h-auto px-3 sm:px-4">
-                  View on Play Store
-                  </ShinyButton>
-                </a>
+                <h3 className={`text-xl tracking-tight ${bricolage_grotesque}`}>
+                  Recent Hackathon Wins
+                </h3>
+                <div className="mt-3 bg-gray-100/10 dark:bg-white/5 backdrop-blur-md rounded-lg p-4 text-black dark:text-white">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h4
+                      className={`text-base font-semibold ${bricolage_grotesque}`}
+                    >
+                      Hack-a-Addict • 1st Place
+                    </h4>
+                  </div>
+                  <p
+                    className={`text-sm text-gray-800 dark:text-gray-200 ${bricolage_grotesque}`}
+                  >
+                    Our team <span className="font-medium">Drag-on</span> (Noel,
+                    Basil & me) secured the top spot out of 50+ teams, winning{" "}
+                    <span className="font-semibold">₹1.5L</span> at a national
+                    hackathon hosted by IEEE & Lions Club. We built{" "}
+                    <span className="font-semibold">DragApp</span> – a
+                    comprehensive drug abuse prevention tool.
+                  </p>
+                  <div className="flex items-center gap-2 mt-3">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=org.lionsclub.dragapp"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ShinyButton className="text-xs sm:text-sm h-8 sm:h-auto px-3 sm:px-4">
+                        View on Play Store
+                      </ShinyButton>
+                    </a>
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
             <div className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md aspect-square p-6 flex justify-between flex-col relative overflow-hidden">
@@ -74,19 +83,25 @@ export default function HighlightsSection() {
                 <Globe />
               </div>
             </div>
-            <div className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md aspect-square p-6 flex justify-between flex-col">
-              <User className="w-8 h-8 stroke-1" />
-              <div className="flex flex-col items-center justify-center text-center">
-                <h3 className={`text-xl tracking-tight mb-4 ${bricolage_grotesque} text-left w-full`}>
+            <div className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md aspect-square p-6 flex flex-col">
+              <div className="flex items-center gap-2 mb-4">
+                <User className="w-8 h-8 stroke-1" />
+                <h3
+                  className={`text-xl tracking-tight ${bricolage_grotesque} text-left`}
+                >
                   By the Numbers
                 </h3>
+              </div>
+              <div className="flex flex-col items-center justify-center text-center mt-14">
                 <div className="grid grid-cols-2 gap-4 w-full">
                   <div className="flex flex-col">
                     <NumberTicker
                       value={42}
                       className="text-3xl font-medium tracking-tight"
                     />
-                    <span className={`text-xs ${bricolage_grotesque} text-muted-foreground`}>
+                    <span
+                      className={`text-xs ${bricolage_grotesque} text-muted-foreground`}
+                    >
                       Projects Built
                     </span>
                   </div>
@@ -95,7 +110,9 @@ export default function HighlightsSection() {
                       value={7}
                       className="text-3xl font-medium tracking-tight"
                     />
-                    <span className={`text-xs ${bricolage_grotesque} text-muted-foreground`}>
+                    <span
+                      className={`text-xs ${bricolage_grotesque} text-muted-foreground`}
+                    >
                       Hackathons
                     </span>
                   </div>
@@ -104,7 +121,9 @@ export default function HighlightsSection() {
                       value={12}
                       className="text-3xl font-medium tracking-tight"
                     />
-                    <span className={`text-xs ${bricolage_grotesque} text-muted-foreground`}>
+                    <span
+                      className={`text-xs ${bricolage_grotesque} text-muted-foreground`}
+                    >
                       Open Source Contributions
                     </span>
                   </div>
@@ -113,7 +132,9 @@ export default function HighlightsSection() {
                       value={15}
                       className="text-3xl font-medium tracking-tight"
                     />
-                    <span className={`text-xs ${bricolage_grotesque} text-muted-foreground`}>
+                    <span
+                      className={`text-xs ${bricolage_grotesque} text-muted-foreground`}
+                    >
                       Technologies Mastered
                     </span>
                   </div>

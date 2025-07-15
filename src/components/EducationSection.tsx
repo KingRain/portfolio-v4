@@ -32,6 +32,7 @@ const EducationSection: React.FC = () => {
                     width={70}
                     height={70}
                     className="rounded-full object-contain"
+                    style={{ height: "auto" }}
                   />
                 </Link>
               </div>
