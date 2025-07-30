@@ -59,11 +59,16 @@ export const GithubGraph = ({
   );
 };
 async function fetchContributionData(username: string): Promise<Activity[]> {
-  const response = await fetch(`https://github.vineet.pro/api/${username}`);
-  const responseBody = await response.json();
-
-  if (!response.ok) {
-    throw Error("Erroring fetching contribution data");
+  let response: Response;
+  try {
+    response = await fetch(`https://github.vineet.pro/api/${username}`);
+    if (!response.ok) {
+      throw new Error("Error fetching contribution data");
+    }
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    throw Error(`Error fetching contribution data: ${errorMessage}`);
   }
+  const responseBody = await response.json();
   return responseBody.data;
 }

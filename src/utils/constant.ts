@@ -8,6 +8,13 @@ export const experienceData: I_Experience[] = [
         duration: "2025 - present",
         job_title: "Full Stack Developer Intern",
     },
+    {
+        company_link: "https://www.linkedin.com/company/statts-aus/",
+        company_logo: "/stattsLogo.jpeg",
+        company_name: "Statts",
+        duration: "2025 - present",
+        job_title: "Junior AI Developer",
+    }
 ];
 
 export const educationData: I_Education[] = [
