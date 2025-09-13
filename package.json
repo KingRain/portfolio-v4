@@ -31,6 +31,7 @@
     "react": "^19.0.0",
     "react-activity-calendar": "^2.7.13",
     "react-dom": "^19.0.0",
+    "react-github-calendar": "^4.5.10",
     "react-icons": "^5.5.0",
     "resend": "^4.6.0",
     "sonner": "^2.0.6",

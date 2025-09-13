@@ -1,10 +1,10 @@
 import { Code, Layers, LineChart, User } from "lucide-react";
 import { bricolage_grotesque } from "@/utils/fonts";
 import { Globe } from "@/components/magicui/globe";
-import { GithubGraph } from "@/components/ui/github-stats";
 import { Link } from "@radix-ui/themes";
 import { NumberTicker } from "@/components/magicui/number-ticker";
 import { ShinyButton } from "@/components/magicui/shiny-button";
+import GitHubCalendar from 'react-github-calendar';
 
 export default function HighlightsSection() {
   return (
@@ -153,17 +153,7 @@ export default function HighlightsSection() {
                 target="_blank"
                 className="block overflow-hidden"
                 >
-                <GithubGraph
-                  username="Kingrain"
-                  blockMargin={2}
-                  colorPallete={[
-                  "#e0f2fe", // lightest blue
-                  "#bae6fd",
-                  "#7dd3fc",
-                  "#38bdf8",
-                  "#0ea5e9", // darkest blue
-                  ]}
-                />
+                <GitHubCalendar username="kingrain" />
                 </Link>
               </div>
               </div>
