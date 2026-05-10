@@ -16,7 +16,7 @@ export default function ContactSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [, setIsEmailSending] = useState(false);
+  const [isEmailSending, setIsEmailSending] = useState(false);
 
   const validateEmail = (email: string) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -43,6 +43,18 @@ export default function ContactSection() {
       return;
     }
 
+    // Client-side quick spam prevention (e.g., 60 seconds cooldown)
+    const lastSent = localStorage.getItem("lastEmailSent");
+    if (lastSent) {
+      const timeSinceLast = Date.now() - parseInt(lastSent, 10);
+      const cooldownMs = 60 * 1000; // 1 minute client cooldown
+      if (timeSinceLast < cooldownMs) {
+        const remainingSeconds = Math.ceil((cooldownMs - timeSinceLast) / 1000);
+        toast.warning(`Please wait ${remainingSeconds} seconds before sending another message.`);
+        return;
+      }
+    }
+
     setIsEmailSending(true);
     try {
       const response = await axios.post<ApiResponse>("/api/send-email", {
@@ -52,6 +64,8 @@ export default function ContactSection() {
       });
       if (response.data.success) {
         toast.success(response.data.message || "Email sent successfully!");
+        // Store last sent timestamp in localStorage to prevent rapid double-sending
+        localStorage.setItem("lastEmailSent", Date.now().toString());
         // Clear form fields on success
         setName("");
         setEmail("");
@@ -59,14 +73,14 @@ export default function ContactSection() {
       } else {
         toast.error(response.data.message || "Failed to send email");
       }
-        } catch (err) {
+    } catch (err) {
       const error = err as AxiosError<ApiResponse>;
       const errorMessage = error.response?.data?.message || error.message || "Something went wrong";
       toast.error(errorMessage);
-        } finally {
+    } finally {
       setIsEmailSending(false);
-        }
-      };
+    }
+  };
 
   return (
     <section
@@ -157,9 +171,10 @@ export default function ContactSection() {
 
           <Button
             type="submit"
-            className="w-full bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 text-white dark:text-black"
+            disabled={isEmailSending}
+            className="w-full bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 text-white dark:text-black disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Send Message
+            {isEmailSending ? "Sending..." : "Send Message"}
           </Button>
         </form>
       </div>

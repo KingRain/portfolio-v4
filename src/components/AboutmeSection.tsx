@@ -18,7 +18,7 @@ const AboutmeSection = () => {
               speed={0.4}
               scrambleChars={".:"}
             >
-              Hey, I’m Sam Joe Chalissery, a 19-year-old developer who writes
+              Hey, I’m Sam Joe Chalissery, a 20-year-old developer who writes
               code like it’s second nature. I started off building Discord bots
               during lockdown, and these days I’m deep into full-stack
               development, automation, and exploring the world of Web3 and
