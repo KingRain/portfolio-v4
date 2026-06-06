@@ -49,6 +49,11 @@ const ExperienceSection: React.FC = () => {
             <h2 className={`text-sm max-sm:text-xs ${inter}`}>
               {exp.company_name}
             </h2>
+            {exp.location && (
+              <p className={`text-xs max-sm:text-[10px] text-gray-500 dark:text-gray-400 mt-0.5 ${inter}`}>
+                {exp.location}
+              </p>
+            )}
             </div>
 
             {/* Duration div */}

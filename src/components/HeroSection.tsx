@@ -1,10 +1,12 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import { bricolage_grotesque } from "@/utils/fonts";
 import { MorphingText } from "@/components/magicui/morphing-text";
 import { RainbowButton } from "@/components/ui/rainbow-button";
 import Avatar from "../app/(home)/components/Avatar";
-import HeroShapes from "./ui/HeroShapes";
+
+const HeroShapes = dynamic(() => import('./ui/HeroShapes'), { ssr: false });
 
 export function HeroSection() {
   return (

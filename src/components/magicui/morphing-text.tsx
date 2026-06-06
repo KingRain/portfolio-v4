@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef } from "react";
 
 import { cn } from "@/lib/utils";
+import { bricolage_grotesque } from "@/utils/fonts";
 
 const morphTime = 1.5;
 const cooldownTime = 0.5;
@@ -139,7 +140,8 @@ export const MorphingText: React.FC<MorphingTextProps> = ({
 }) => (
   <div
     className={cn(
-      "relative mx-auto h-16 w-full max-w-screen-lg text-center font-['Bricolage_Grotesque'] text-2xl font-bold leading-none [filter:url(#threshold)_blur(0.6px)] mt-2 z-10",
+      "relative mx-auto h-16 w-full max-w-screen-lg text-center text-2xl font-bold leading-none [filter:url(#threshold)_blur(0.6px)] mt-2 z-10",
+      bricolage_grotesque,
       className
     )}
   >

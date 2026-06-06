@@ -2,6 +2,7 @@ export interface I_Experience {
     company_link: string,
     company_logo: string,
     company_name: string,
+    location?: string,
     duration: string,
     job_title: string,
 }

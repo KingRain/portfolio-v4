@@ -4,11 +4,13 @@ const Avatar = () => {
   return (
     <a href='https://x.com/httperr0r_' target='_blank'>
       <Image
-      src='/ProfilePicture.jpg'
-      alt='Discord Avatar'
-      width={100}
-      height={100}
-      className='rounded-full border-2 border-white'
+        src='/ProfilePicture.jpg'
+        alt='Sam Joe profile picture'
+        width={100}
+        height={100}
+        priority
+        sizes="100px"
+        className='rounded-full border-2 border-white'
       />
     </a>
   )

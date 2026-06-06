@@ -3,8 +3,71 @@ import { bricolage_grotesque } from "@/utils/fonts";
 import { Globe } from "@/components/magicui/globe";
 import { Link } from "@radix-ui/themes";
 import { NumberTicker } from "@/components/magicui/number-ticker";
-import { ShinyButton } from "@/components/magicui/shiny-button";
-import GitHubCalendar from 'react-github-calendar';
+import GitHubContributions from "@/components/GitHubContributions";
+import HighlightsCarousel, {
+  type HighlightSlide,
+} from "@/components/HighlightsCarousel";
+
+const highlightSlides: HighlightSlide[] = [
+  {
+    tag: "New Article",
+    title: "How PostHog Handles Millions of Events",
+    description: (
+      <>
+        Wrote about building{" "}
+        <span className="font-semibold">SightHog</span> — a mini replica of
+        PostHog&apos;s ingestion pipeline with Kafka, ClickHouse, and rrweb
+        replay — and what I learned about scaling event analytics from scratch.
+      </>
+    ),
+    ctaLabel: "Read Article",
+    ctaHref: "https://sight-hog.vercel.app/docs",
+  },
+  {
+    tag: "Hackathon Win",
+    title: "Hack-a-Addict • 1st Place",
+    description: (
+      <>
+        Team <span className="font-medium">Drag-on</span> (Noel, Basil & me) took
+        1st of 50+ teams and won <span className="font-semibold">₹1.5L</span> at
+        a national hackathon by IEEE & Lions Club. We built{" "}
+        <span className="font-semibold">DragApp</span> — a drug abuse prevention
+        platform.
+      </>
+    ),
+    ctaLabel: "View on Play Store",
+    ctaHref:
+      "https://play.google.com/store/apps/details?id=org.lionsclub.dragapp",
+  },
+  {
+    tag: "Hackathon Win",
+    title: "Smart India Hackathon 2025 • Winner",
+    description: (
+      <>
+        Team <span className="font-medium">Devillum</span> won SIH 2025 under PS
+        ID 25233 (NTRO) at IIT Jammu — building a solution for national
+        technical research with Niranjan, Pranathi, Sarah, Noel, and Vishnu.
+      </>
+    ),
+    ctaLabel: "Read on LinkedIn",
+    ctaHref:
+      "https://www.linkedin.com/posts/samjoe404_still-feels-unreal-but-here-we-are-our-activity-7404433484024315904-6p1f",
+  },
+  {
+    tag: "Product Launch",
+    title: "Buffer Beta is Live",
+    description: (
+      <>
+        Shipped the beta for my first B2C SaaS —{" "}
+        <span className="font-semibold">Buffer</span>, a command-driven workspace
+        for notes, PDFs, and deep links. Built for people who think in commands,
+        not clicks.
+      </>
+    ),
+    ctaLabel: "Try Buffer",
+    ctaHref: "https://www.bufr.in/",
+  },
+];
 
 export default function HighlightsSection() {
   return (
@@ -25,38 +88,9 @@ export default function HighlightsSection() {
               <Code className="w-8 h-8 stroke-1" />
               <div className="flex flex-col">
                 <h3 className={`text-xl tracking-tight ${bricolage_grotesque}`}>
-                  Recent Hackathon Wins
+                  Recent Highlights
                 </h3>
-                <div className="mt-3 bg-gray-100/10 dark:bg-white/5 backdrop-blur-md rounded-lg p-4 text-black dark:text-white">
-                  <div className="flex items-center gap-2 mb-2">
-                    <h4
-                      className={`text-base font-semibold ${bricolage_grotesque}`}
-                    >
-                      Hack-a-Addict • 1st Place
-                    </h4>
-                  </div>
-                  <p
-                    className={`text-sm text-gray-800 dark:text-gray-200 ${bricolage_grotesque}`}
-                  >
-                    Our team <span className="font-medium">Drag-on</span> (Noel,
-                    Basil & me) secured the top spot out of 50+ teams, winning{" "}
-                    <span className="font-semibold">₹1.5L</span> at a national
-                    hackathon hosted by IEEE & Lions Club. We built{" "}
-                    <span className="font-semibold">DragApp</span> – a
-                    comprehensive drug abuse prevention tool.
-                  </p>
-                  <div className="flex items-center gap-2 mt-3">
-                    <a
-                      href="https://play.google.com/store/apps/details?id=org.lionsclub.dragapp"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <ShinyButton className="text-xs sm:text-sm h-8 sm:h-auto px-3 sm:px-4">
-                        View on Play Store
-                      </ShinyButton>
-                    </a>
-                  </div>
-                </div>
+                <HighlightsCarousel slides={highlightSlides} />
               </div>
             </div>
             <div className="border border-gray-200 dark:border-gray-800 bg-white dark:bg-black text-black dark:text-white rounded-md aspect-square p-6 flex justify-between flex-col relative overflow-hidden">
@@ -149,11 +183,11 @@ export default function HighlightsSection() {
               </h3>
               <div className="mt-2 overflow-hidden">
                 <Link
-                href={"https://github.com/Kingrain"}
+                href={"https://github.com/KingRain"}
                 target="_blank"
                 className="block overflow-hidden"
                 >
-                <GitHubCalendar username="kingrain" />
+                <GitHubContributions />
                 </Link>
               </div>
               </div>

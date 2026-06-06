@@ -1,28 +1,21 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
 import { ThemeProvider } from '@/context/ThemeContext';
-import { DockNav } from '@/components/Dock';
+
+const DockNav = dynamic(
+  () => import('@/components/Dock').then((m) => ({ default: m.DockNav })),
+  { ssr: false }
+);
 
 export default function ClientShell({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
-  if (!mounted)
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        Loading...
-      </div>
-    );
-
   return (
     <ThemeProvider>
       <div className="relative min-h-screen">
-        {/* Background */}
         <div className="fixed inset-0 -z-10">
           <div
             className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -44,10 +37,8 @@ export default function ClientShell({
           />
         </div>
 
-        {/* Main content */}
         <div className="relative z-10">{children}</div>
 
-        {/* Dock */}
         <div className="fixed bottom-4 inset-x-0 flex justify-center z-50">
           <DockNav />
         </div>
