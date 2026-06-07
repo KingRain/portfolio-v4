@@ -62,7 +62,7 @@ const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "/projects", icon: PencilIcon, label: "Projects" },
-    { href: "MyResume.pdf", icon: Icons.resume, label: "Resume", target: "_blank", rel: "noopener noreferrer" },
+    { href: "/SamJoe_Resume.pdf", icon: Icons.resume, label: "Resume", target: "_blank", rel: "noopener noreferrer" },
   ],
   contact: {
     social: {
