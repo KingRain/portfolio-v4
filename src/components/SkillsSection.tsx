@@ -20,7 +20,7 @@ import {
     SiSupabase, 
     SiMysql, 
     SiDocker, 
-    SiAmazonwebservices as SiAmazonaws, 
+    SiServerless as SiAmazonaws, 
     SiRedux, 
     SiTailwindcss, 
     SiNodedotjs, 

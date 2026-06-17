@@ -9,6 +9,14 @@ const nextConfig: NextConfig = {
       '@radix-ui/themes',
     ],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "api.microlink.io",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { bricolage_grotesque, inter } from "@/utils/fonts";
 import Image from "next/image";
 import { Badge, Link } from "@radix-ui/themes";
 import { GitHubLogoIcon, GlobeIcon } from "@radix-ui/react-icons";
 import { BorderBeam } from "./ui/border-beam";
-import { PixelBackground } from "./backgrounds/pixel-background";
 import { MagneticButton } from "./unlumen-ui/magnetic-button";
 import { SightHogLogo } from "./icons/SightHogLogo";
 import { BufferLogo } from "./icons/BufferLogo";
@@ -209,8 +208,7 @@ function ProjectLogo({ project }: { project: Project }) {
 }
 
 export function ProjectSection() {
-  const [showAll, setShowAll] = useState(false);
-  const displayedProjects = showAll ? projects : projects.slice(0, 4);
+  const displayedProjects = projects;
 
   return (
     <div className="flex flex-col items-center justify-center w-full py-16 bg-transparent">
@@ -221,112 +219,94 @@ export function ProjectSection() {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl px-4">
         {displayedProjects.map((project, idx) => (
-          <PixelBackground
-            key={idx}
-            className={`${CARD_HEIGHT} w-full rounded-xl`}
-            pattern="center"
-            gap={5}
-            speed={35}
-            opacity={0.85}
-            darkColors="#2a2a2a,#3b3b3b,#525252"
-            lightColors="#d4d4d4,#bdbdbd,#a3a3a3"
-          >
+          <div key={idx} className={`${CARD_HEIGHT} w-full rounded-xl group/spotlight`}>
             <div
               className={`relative flex ${CARD_HEIGHT} w-full flex-col rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-black p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl`}
             >
-              <div className="flex flex-col items-start mb-3">
-                <Link
-                  href={project.liveUrl || project.githubUrl || "#"}
-                  target="_blank"
-                >
-                  <ProjectLogo project={project} />
-                </Link>
-                <div className="mt-3">
+              <div className="relative z-10 flex flex-1 flex-col pointer-events-none">
+                <div className="flex flex-col items-start mb-3">
                   <Link
                     href={project.liveUrl || project.githubUrl || "#"}
                     target="_blank"
-                    underline="none"
+                    className="pointer-events-auto"
                   >
-                    <h3
-                      className={`text-xl font-bold tracking-tight text-primary dark:text-primary-dark ${bricolage_grotesque}`}
-                    >
-                      {project.useSightHogLogo ? (
-                        <>
-                          <span>Sight</span>
-                          <span className="text-orange-500">Hog</span>
-                        </>
-                      ) : (
-                        project.title
-                      )}
-                    </h3>
+                    <ProjectLogo project={project} />
                   </Link>
+                  <div className="mt-3">
+                    <Link
+                      href={project.liveUrl || project.githubUrl || "#"}
+                      target="_blank"
+                      underline="none"
+                      className="pointer-events-auto"
+                    >
+                      <h3
+                        className={`text-xl font-bold tracking-tight text-primary dark:text-primary-dark ${bricolage_grotesque}`}
+                      >
+                        {project.useSightHogLogo ? (
+                          <>
+                            <span>Sight</span>
+                            <span className="text-orange-500">Hog</span>
+                          </>
+                        ) : (
+                          project.title
+                        )}
+                      </h3>
+                    </Link>
+                  </div>
+                </div>
+
+                <p
+                  className={`mb-3 line-clamp-5 flex-1 text-sm text-primary dark:text-primary-dark ${inter}`}
+                >
+                  {project.description}
+                </p>
+
+                <div className="mb-4 flex h-14 shrink-0 flex-wrap content-start gap-1.5 overflow-hidden">
+                  {project.techStack?.map((tech, techIdx) => (
+                    <Badge
+                      key={techIdx}
+                      size="1"
+                      color="gray"
+                      variant="soft"
+                      highContrast
+                      className={`shrink-0 whitespace-nowrap rounded-sm border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs leading-tight dark:border-gray-700 dark:bg-black hover:bg-gray-200 dark:hover:bg-gray-900 transition-colors ${bricolage_grotesque}`}
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+
+                <div className="mt-auto flex gap-3 pointer-events-auto">
+                  {project.liveUrl && (
+                    <MagneticButton
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => window.open(project.liveUrl, "_blank")}
+                      className={`flex items-center text-xs py-1 px-3 rounded-md border border-gray-300 dark:border-gray-700 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 ${bricolage_grotesque}`}
+                    >
+                      <GlobeIcon width={12} height={12} className="mr-1" /> Website
+                    </MagneticButton>
+                  )}
+                  {project.githubUrl && (
+                    <MagneticButton
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      onClick={() => window.open(project.githubUrl, "_blank")}
+                      className={`flex items-center text-xs py-1 px-3 rounded-md border border-gray-300 dark:border-gray-700 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 ${bricolage_grotesque}`}
+                    >
+                      <GitHubLogoIcon width={12} height={12} className="mr-1" />{" "}
+                      Source
+                    </MagneticButton>
+                  )}
                 </div>
               </div>
-
-              <p
-                className={`mb-3 line-clamp-5 flex-1 text-sm text-primary dark:text-primary-dark ${inter}`}
-              >
-                {project.description}
-              </p>
-
-              <div className="mb-4 flex h-14 shrink-0 flex-wrap content-start gap-1.5 overflow-hidden">
-                {project.techStack?.map((tech, techIdx) => (
-                  <Badge
-                    key={techIdx}
-                    size="1"
-                    color="gray"
-                    variant="soft"
-                    highContrast
-                    className={`shrink-0 whitespace-nowrap rounded-sm border border-gray-200 bg-gray-100 px-2 py-0.5 text-xs leading-tight dark:border-gray-700 dark:bg-black hover:bg-gray-200 dark:hover:bg-gray-900 transition-colors ${bricolage_grotesque}`}
-                  >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-
-              <div className="mt-auto flex gap-3">
-                {project.liveUrl && (
-                  <MagneticButton
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open(project.liveUrl, "_blank")}
-                    className={`flex items-center text-xs py-1 px-3 rounded-md border border-gray-300 dark:border-gray-700 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 ${bricolage_grotesque}`}
-                  >
-                    <GlobeIcon width={12} height={12} className="mr-1" /> Website
-                  </MagneticButton>
-                )}
-                {project.githubUrl && (
-                  <MagneticButton
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => window.open(project.githubUrl, "_blank")}
-                    className={`flex items-center text-xs py-1 px-3 rounded-md border border-gray-300 dark:border-gray-700 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 ${bricolage_grotesque}`}
-                  >
-                    <GitHubLogoIcon width={12} height={12} className="mr-1" />{" "}
-                    Source
-                  </MagneticButton>
-                )}
-              </div>
-              <BorderBeam size={250} duration={4} delay={idx * 3} />
+              <BorderBeam size={250} duration={4} delay={idx * 3} spotlight spotlightRadius={350} />
             </div>
-          </PixelBackground>
+          </div>
         ))}
       </div>
-
-      {projects.length > 4 && (
-        <div className="flex w-full max-w-5xl justify-center mt-8 px-4">
-          <MagneticButton
-            onClick={() => setShowAll(!showAll)}
-            variant="outline"
-            size="sm"
-            className={`py-1 px-3 text-xs rounded-md border border-gray-300 dark:border-gray-700 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 ${bricolage_grotesque}`}
-          >
-            {showAll ? "Show Less" : "Show More"}
-          </MagneticButton>
-        </div>
-      )}
     </div>
   );
 }
