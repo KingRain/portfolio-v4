@@ -50,22 +50,6 @@
   --color-color-2: var(----color-2);
   --color-color-1: var(----color-1);
 
-  @keyframes rainbow {
-    0% {
-      background-position: 0%;
-    }
-    100% {
-      background-position: 200%;
-    }
-  }
-  @keyframes rainbow {
-  0% {
-    background-position: 0%;
-    }
-  100% {
-    background-position: 200%;
-    }
-  }
   --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
 
   @keyframes cell-ripple {
@@ -81,28 +65,6 @@
   }
   --animate-shine: shine var(--duration) infinite linear;
 
-  @keyframes shine {
-    0% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    to {
-      background-position: 0% 0%;
-    }
-  }
-  @keyframes shine {
-  0% {
-    background-position: 0% 0%;
-    }
-  50% {
-    background-position: 100% 100%;
-    }
-  to {
-    background-position: 0% 0%;
-    }
-  }
   --animate-border-beam: border-beam calc(var(--duration)*1s) infinite linear;
 
   @keyframes border-beam {
@@ -111,54 +73,6 @@
     }
   }
 
-  @keyframes shine-pulse {
-    0% {
-      background-position: 0% 0%;
-    }
-    50% {
-      background-position: 100% 100%;
-    }
-    to {
-      background-position: 0% 0%;
-    }
-  }
-  @keyframes border-beam {
-  100% {
-    offset-distance: 100%;
-    }
-  }
-  @keyframes shine-pulse {
-  0% {
-    background-position: 0% 0%;
-    }
-  50% {
-    background-position: 100% 100%;
-    }
-  to {
-    background-position: 0% 0%;
-    }
-  }
-  @keyframes border-beam {
-  100% {
-    offset-distance: 100%;
-    }
-  }
-  @keyframes shine-pulse {
-  0% {
-    background-position: 0% 0%;
-    }
-  50% {
-    background-position: 100% 100%;
-    }
-  to {
-    background-position: 0% 0%;
-    }
-  }
-  @keyframes border-beam {
-  100% {
-    offset-distance: 100%;
-    }
-  }
 }
 
 :root {

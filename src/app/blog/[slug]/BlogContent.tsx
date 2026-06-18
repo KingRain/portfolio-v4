@@ -71,7 +71,7 @@ const components: Partial<Components> = {
       <>
         <span className="block text-center my-10 cursor-zoom-in" onClick={() => setOpen(true)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt || ''} className="inline-block max-w-full rounded-lg transition-opacity hover:opacity-90" />
+          <img src={src} alt={alt || ''} loading="lazy" className="inline-block max-w-full rounded-lg transition-opacity hover:opacity-90" />
         </span>
         {open && src && <ImagePreview src={String(src)} alt={alt || ''} onClose={() => setOpen(false)} />}
       </>

@@ -7,6 +7,13 @@ import { bricolage_grotesque } from '@/utils/fonts';
 
 export const metadata = {
   title: 'Sam Joe | Blog',
+  description: 'Thoughts, tutorials, and notes on software engineering, system design, and building things.',
+  openGraph: {
+    title: 'Sam Joe | Blog',
+    description: 'Thoughts, tutorials, and notes on software engineering, system design, and building things.',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image' },
 };
 
 export default function BlogPage() {

@@ -15,6 +15,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `Sam Joe | ${post.title}`,
     description: post.description,
+    openGraph: {
+      title: post.title,
+      description: post.description,
+      type: 'article',
+      publishedTime: post.date,
+      authors: [post.author],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.description,
+    },
+    alternates: { canonical: `/blog/${post.slug}` },
   };
 }
 
@@ -22,8 +35,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = getPost((await params).slug);
   if (!post) notFound();
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    author: { '@type': 'Person', name: post.author },
+    datePublished: post.date,
+  };
+
   return (
     <article className="mx-auto max-w-[860px] px-4 sm:px-6 pt-10 pb-16 bg-white dark:bg-black min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="mb-6">
         <Link href="/blog" className={`${bricolage_grotesque} inline-flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 mb-6 transition-colors`}>
           ← Back to Blog

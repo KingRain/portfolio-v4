@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/context/ThemeContext";
 import { Moon, Sun } from "lucide-react";
 import { bricolage_grotesque } from "@/utils/fonts";
 

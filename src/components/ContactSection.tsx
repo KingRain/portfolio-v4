@@ -8,7 +8,6 @@ import React, { useState } from "react";
 import { X, Calendar } from "lucide-react";
 import { bricolage_grotesque } from "@/utils/fonts";
 import { toast } from "sonner";
-import axios, { AxiosError } from "axios";
 import { ApiResponse } from "@/types/project";
 
 export default function ContactSection() {
@@ -57,25 +56,23 @@ export default function ContactSection() {
 
     setIsEmailSending(true);
     try {
-      const response = await axios.post<ApiResponse>("/api/send-email", {
-        name,
-        email,
-        message,
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message }),
       });
-      if (response.data.success) {
-        toast.success(response.data.message || "Email sent successfully!");
-        // Store last sent timestamp in localStorage to prevent rapid double-sending
+      const data: ApiResponse = await res.json();
+      if (data.success) {
+        toast.success(data.message || "Email sent successfully!");
         localStorage.setItem("lastEmailSent", Date.now().toString());
-        // Clear form fields on success
         setName("");
         setEmail("");
         setMessage("");
       } else {
-        toast.error(response.data.message || "Failed to send email");
+        toast.error(data.message || "Failed to send email");
       }
     } catch (err) {
-      const error = err as AxiosError<ApiResponse>;
-      const errorMessage = error.response?.data?.message || error.message || "Something went wrong";
+      const errorMessage = (err as Error).message || "Something went wrong";
       toast.error(errorMessage);
     } finally {
       setIsEmailSending(false);
