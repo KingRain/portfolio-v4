@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { HiHome } from 'react-icons/hi';
-import { FiGithub, FiLinkedin, FiFileText } from 'react-icons/fi';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { BsFileText, BsNewspaper } from 'react-icons/bs';
 
 import { Dock, type DockItem } from "@/components/magicui/dock";
@@ -26,7 +26,6 @@ export function DockNav() {
     { icon: <HiHome />, label: "Home", href: "/" },
     { icon: <BsFileText />, label: "Projects", href: "/projects" },
     { icon: <BsNewspaper />, label: "Blog", href: "/blog" },
-    { icon: <FiFileText />, label: "Resume", onClick: () => window.open("/SamJoe_Resume.pdf", "_blank", "noopener noreferrer"), separator: true },
     { icon: <FiGithub />, label: "GitHub", onClick: () => window.open("https://github.com/KingRain", "_blank", "noopener noreferrer") },
     { icon: <FiLinkedin />, label: "LinkedIn", onClick: () => window.open("https://www.linkedin.com/in/samjoe404/", "_blank", "noopener noreferrer") },
     { icon: <XIcon />, label: "X", onClick: () => window.open("https://x.com/httperr0r_", "_blank", "noopener noreferrer"), separator: true },

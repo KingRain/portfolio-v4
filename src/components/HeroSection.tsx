@@ -11,9 +11,9 @@ export function HeroSection() {
     <div className="relative min-h-screen overflow-hidden">
       <PixelLiquidBg className="absolute inset-0 h-full pointer-events-none" />
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-8 pb-20">
-        <div className="w-full md:w-2/3 flex flex-col items-center md:mt-28 max-md:mt-8">
+        <div className="w-full md:w-2/3 flex flex-col items-center md:mt-28">
           <div className="flex flex-col items-center w-full">
-            <div className="flex justify-center w-full max-w-xs">
+            <div className="flex justify-center w-full max-w-xs max-md:mt-24">
               <Avatar />
             </div>
             <div className="mt-4 px-4 md:px-0 w-full">

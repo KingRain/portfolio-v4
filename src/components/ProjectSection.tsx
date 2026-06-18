@@ -3,8 +3,10 @@
 import React from "react";
 import { bricolage_grotesque, inter } from "@/utils/fonts";
 import Image from "next/image";
-import { Badge, Link } from "@radix-ui/themes";
+import Link from "next/link";
+import { Badge } from "@radix-ui/themes";
 import { GitHubLogoIcon, GlobeIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { BorderBeam } from "./ui/border-beam";
 import { MagneticButton } from "./unlumen-ui/magnetic-button";
 import { SightHogLogo } from "./icons/SightHogLogo";
@@ -207,8 +209,12 @@ function ProjectLogo({ project }: { project: Project }) {
   );
 }
 
-export function ProjectSection() {
-  const displayedProjects = projects;
+interface ProjectSectionProps {
+  maxCount?: number;
+}
+
+export function ProjectSection({ maxCount }: ProjectSectionProps) {
+  const displayedProjects = maxCount ? projects.slice(0, maxCount) : projects;
 
   return (
     <div className="flex flex-col items-center justify-center w-full py-16 bg-transparent">
@@ -236,7 +242,6 @@ export function ProjectSection() {
                     <Link
                       href={project.liveUrl || project.githubUrl || "#"}
                       target="_blank"
-                      underline="none"
                       className="pointer-events-auto"
                     >
                       <h3
@@ -307,6 +312,18 @@ export function ProjectSection() {
           </div>
         ))}
       </div>
+      {maxCount && projects.length > maxCount && (
+        <Link href="/projects">
+          <MagneticButton
+            type="button"
+            variant="outline"
+            size="sm"
+            className={`mt-8 flex items-center gap-2 text-sm py-2 px-6 rounded-md border border-gray-300 dark:border-gray-700 bg-black dark:bg-white text-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-100 ${bricolage_grotesque}`}
+          >
+            Show More <ArrowRightIcon />
+          </MagneticButton>
+        </Link>
+      )}
     </div>
   );
 }

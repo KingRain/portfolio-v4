@@ -4,6 +4,7 @@ date: 2026-06-01
 description: "A deep dive into PostHog's event ingestion pipeline — Kafka, ClickHouse, and the Luhn algorithm."
 author: Sam Joe Chalissery
 published: true
+slug: "posthog-event-pipeline"
 source: "https://medium.com/@samjoe.txt/how-posthog-handles-millions-of-events-what-i-learned-building-a-mini-replica-from-scratch-5ebef59af78a"
 ---
 

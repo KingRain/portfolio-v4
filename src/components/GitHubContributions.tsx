@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { isBefore, parseISO, subMonths } from "date-fns";
+import { isAfter, isBefore, parseISO } from "date-fns";
 import { cn } from "@/lib/utils";
 import {
   ContributionGraph,
@@ -14,7 +14,6 @@ import {
 } from "@/components/kibo-ui/contribution-graph";
 
 const GITHUB_USERNAME = "KingRain";
-const MONTHS_TO_SHOW = 6;
 
 const githubBlockClassName = cn(
   "data-[level='0']:fill-[#ebedf0] dark:data-[level='0']:fill-[#161b22]",
@@ -42,13 +41,15 @@ export default function GitHubContributions() {
       .then((res) => res.json())
       .then((json: ContributionsResponse) => {
         if (cancelled) return;
-        const cutoff = subMonths(new Date(), MONTHS_TO_SHOW);
-        const recent = json.contributions.filter(
-          (activity) => !isBefore(parseISO(activity.date), cutoff)
-        );
-        setData(recent);
+        const start = parseISO("2025-10-01");
+        const end = parseISO("2026-07-31");
+        const filtered = json.contributions.filter((a) => {
+          const d = parseISO(a.date);
+          return !isBefore(d, start) && !isAfter(d, end);
+        });
+        setData(filtered);
         setTotalCount(
-          recent.reduce((sum, activity) => sum + activity.count, 0)
+          filtered.reduce((sum, activity) => sum + activity.count, 0)
         );
       })
       .catch(() => {
@@ -92,7 +93,7 @@ export default function GitHubContributions() {
         <ContributionGraphTotalCount>
           {({ totalCount }) => (
             <div className="text-muted-foreground">
-              {totalCount} contributions in the last {MONTHS_TO_SHOW} months
+              {totalCount} contributions
             </div>
           )}
         </ContributionGraphTotalCount>

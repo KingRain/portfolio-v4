@@ -8,6 +8,7 @@ import type { Components } from 'react-markdown';
 import { LinkPreview } from '@/components/ui/link-preview';
 import { CodeBlock } from '@/components/ui/code-block';
 import { X } from 'lucide-react';
+import { bricolage_grotesque } from '@/utils/fonts';
 
 function ImagePreview({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -52,11 +53,23 @@ const components: Partial<Components> = {
       {children}
     </LinkPreview>
   ),
+  iframe: (props) => {
+    const { style, ...rest } = props;
+    return (
+      <iframe
+        {...rest}
+        style={{
+          ...(style as React.CSSProperties || {}),
+          boxShadow: '0 0 30px rgba(147, 51, 234, 0.15), 0 0 60px rgba(59, 130, 246, 0.1)',
+        }}
+      />
+    );
+  },
   img: function BlogImage({ src, alt }) {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <span className="block text-center my-6 cursor-zoom-in" onClick={() => setOpen(true)}>
+        <span className="block text-center my-10 cursor-zoom-in" onClick={() => setOpen(true)}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={src} alt={alt || ''} className="inline-block max-w-full rounded-lg transition-opacity hover:opacity-90" />
         </span>
@@ -64,28 +77,31 @@ const components: Partial<Components> = {
       </>
     );
   },
-  p: ({ children }) => (
-    <p className="mb-4 text-[1.125rem] leading-[1.7] font-[family-name:var(--font-geist-sans)] tracking-[-0.003em] text-neutral-800 dark:text-neutral-200">
-      {children}
-    </p>
-  ),
+  p: ({ children, ...props }) => {
+    const align = (props as Record<string, unknown>).align;
+    return (
+      <p className={`mb-4 text-[1.125rem] leading-[1.7] font-[family-name:var(--font-geist-sans)] tracking-[-0.003em] text-neutral-700 dark:text-neutral-400 ${align === "center" ? "text-center" : ""}`}>
+        {children}
+      </p>
+    );
+  },
   h1: ({ children }) => (
-    <h1 className="font-[family-name:var(--font-playfair)] text-[2.25rem] leading-[1.2] font-bold mt-10 mb-2 text-neutral-900 dark:text-neutral-100">
+    <h1 className={`${bricolage_grotesque} text-[2.25rem] leading-[1.2] font-bold mt-10 mb-2 text-neutral-900 dark:text-neutral-100`}>
       {children}
     </h1>
   ),
   h2: ({ children }) => (
-    <h2 className="font-[family-name:var(--font-playfair)] text-[1.625rem] leading-[1.3] font-bold mt-8 mb-2 text-neutral-900 dark:text-neutral-100">
+    <h2 className={`${bricolage_grotesque} text-[1.625rem] leading-[1.3] font-bold mt-8 mb-2 text-neutral-900 dark:text-neutral-100`}>
       {children}
     </h2>
   ),
   h3: ({ children }) => (
-    <h3 className="font-[family-name:var(--font-playfair)] text-[1.375rem] leading-[1.4] font-bold mt-6 mb-1 text-neutral-900 dark:text-neutral-100">
+    <h3 className={`${bricolage_grotesque} text-[1.375rem] leading-[1.4] font-bold mt-6 mb-1 text-neutral-900 dark:text-neutral-100`}>
       {children}
     </h3>
   ),
   h4: ({ children }) => (
-    <h4 className="font-[family-name:var(--font-playfair)] text-[1.125rem] leading-[1.4] font-bold mt-5 mb-1 text-neutral-900 dark:text-neutral-100">
+    <h4 className={`${bricolage_grotesque} text-[1.125rem] leading-[1.4] font-bold mt-5 mb-1 text-neutral-900 dark:text-neutral-100`}>
       {children}
     </h4>
   ),
@@ -95,12 +111,12 @@ const components: Partial<Components> = {
     </blockquote>
   ),
   ul: ({ children }) => (
-    <ul className="mb-4 pl-6 text-[1.125rem] leading-[1.7] font-[family-name:var(--font-geist-sans)] tracking-[-0.003em] text-neutral-800 dark:text-neutral-200 list-disc space-y-1">
+    <ul className="mb-4 pl-6 text-[1.125rem] leading-[1.7] font-[family-name:var(--font-geist-sans)] tracking-[-0.003em] text-neutral-700 dark:text-neutral-400 list-disc space-y-1">
       {children}
     </ul>
   ),
   ol: ({ children }) => (
-    <ol className="mb-4 pl-6 text-[1.125rem] leading-[1.7] font-[family-name:var(--font-geist-sans)] tracking-[-0.003em] text-neutral-800 dark:text-neutral-200 list-decimal space-y-1">
+    <ol className="mb-4 pl-6 text-[1.125rem] leading-[1.7] font-[family-name:var(--font-geist-sans)] tracking-[-0.003em] text-neutral-700 dark:text-neutral-400 list-decimal space-y-1">
       {children}
     </ol>
   ),

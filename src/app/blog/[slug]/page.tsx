@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { getPost, getAllPosts } from '@/lib/blog';
 import { BlogContent } from './BlogContent';
+import { bricolage_grotesque } from '@/utils/fonts';
 
 export function generateStaticParams() {
   return getAllPosts().map((p) => ({ slug: p.slug }));
@@ -22,8 +24,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <article className="mx-auto max-w-[860px] px-4 sm:px-6 pt-10 pb-16 bg-white dark:bg-black min-h-screen">
+      <div className="mb-6">
+        <Link href="/blog" className={`${bricolage_grotesque} inline-flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 mb-6 transition-colors`}>
+          ← Back to Blog
+        </Link>
+      </div>
       <header className="mb-6">
-        <h1 className="font-[family-name:var(--font-playfair)] text-[2rem] sm:text-[2.5rem] leading-[1.15] font-bold mb-3 text-neutral-900 dark:text-neutral-100">
+        <h1 className={`${bricolage_grotesque} text-[2rem] sm:text-[2.5rem] leading-[1.15] font-bold mb-3 text-neutral-900 dark:text-neutral-100`}>
           {post.title}
         </h1>
         <div className="flex items-center gap-3 text-[0.85rem] text-neutral-500 dark:text-neutral-400">
@@ -33,6 +40,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
       </header>
       <BlogContent content={post.content} />
+
+      <div className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800 flex items-center justify-between">
+        <Link href="/blog" className={`${bricolage_grotesque} inline-flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors`}>
+          ← Back to Blog
+        </Link>
+        <Link href="/" className={`${bricolage_grotesque} inline-flex items-center gap-1 text-sm text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors`}>
+          Home →
+        </Link>
+      </div>
     </article>
   );
 }

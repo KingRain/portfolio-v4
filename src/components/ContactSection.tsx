@@ -119,10 +119,10 @@ export default function ContactSection() {
         </Button>
       </div>
 
-      <div className="bg-white dark:bg-black rounded-lg shadow-md p-6 md:p-8 w-full">
+      <div className="bg-black rounded-lg shadow-md p-6 md:p-8 w-full">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="text-left">
-            <Label htmlFor="name" className="text-black dark:text-white">
+            <Label htmlFor="name" className="text-white">
               Your Name
             </Label>
             <Input
@@ -132,12 +132,12 @@ export default function ContactSection() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
-              className="mt-1 w-full bg-white dark:bg-black border-black dark:border-white text-black dark:text-white"
+              className="mt-1 w-full bg-black border-white text-white"
             />
           </div>
 
           <div className="text-left">
-            <Label htmlFor="email" className="text-black dark:text-white">
+            <Label htmlFor="email" className="text-white">
               Your Email
             </Label>
             <Input
@@ -147,7 +147,7 @@ export default function ContactSection() {
               value={email}
               onChange={handleEmailChange}
               required
-              className="mt-1 w-full bg-white dark:bg-black border-black dark:border-white text-black dark:text-white"
+              className="mt-1 w-full bg-black border-white text-white"
             />
             {emailError && (
               <p className="text-red-500 text-sm mt-1">{emailError}</p>
@@ -155,7 +155,7 @@ export default function ContactSection() {
           </div>
 
           <div className="text-left">
-            <Label htmlFor="message" className="text-black dark:text-white">
+            <Label htmlFor="message" className="text-white">
               Message
             </Label>
             <Textarea
@@ -164,7 +164,7 @@ export default function ContactSection() {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               required
-              className="mt-1 w-full bg-white dark:bg-black border-black dark:border-white text-black dark:text-white"
+              className="mt-1 w-full bg-black border-white text-white"
               rows={5}
             />
           </div>
@@ -172,7 +172,7 @@ export default function ContactSection() {
           <Button
             type="submit"
             disabled={isEmailSending}
-            className="w-full bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 text-white dark:text-black disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-white hover:bg-gray-200 text-black disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isEmailSending ? "Sending..." : "Send Message"}
           </Button>

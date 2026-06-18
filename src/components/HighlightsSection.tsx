@@ -97,7 +97,7 @@ export default function HighlightsSection() {
               <LineChart className="w-8 h-8 stroke-1 z-10 relative" />
               <div className="flex flex-col z-10 relative items-center justify-center text-center">
                 <NumberTicker
-                  value={170}
+                  value={200}
                   className="whitespace-pre-wrap text-6xl md:text-7xl lg:text-8xl font-medium tracking-tighter bg-gradient-to-r from-black dark:from-white to-blue-600 dark:to-blue-300 text-transparent bg-clip-text"
                 />
                 <div className="flex flex-col mb-24">
@@ -130,7 +130,7 @@ export default function HighlightsSection() {
                 <div className="grid grid-cols-2 gap-4 w-full">
                   <div className="flex flex-col">
                     <NumberTicker
-                      value={42}
+                      value={53}
                       className="text-3xl font-medium tracking-tight"
                     />
                     <span
@@ -141,7 +141,7 @@ export default function HighlightsSection() {
                   </div>
                   <div className="flex flex-col">
                     <NumberTicker
-                      value={7}
+                      value={9}
                       className="text-3xl font-medium tracking-tight"
                     />
                     <span

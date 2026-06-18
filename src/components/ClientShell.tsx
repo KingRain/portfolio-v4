@@ -2,6 +2,8 @@
 
 import dynamic from 'next/dynamic';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { MobileNav } from './MobileNav';
+import { SmoothScroll } from './SmoothScroll';
 
 const DockNav = dynamic(
   () => import('@/components/Dock').then((m) => ({ default: m.DockNav })),
@@ -15,13 +17,16 @@ export default function ClientShell({
 }) {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-black">
-        <div className="relative min-h-screen">{children}</div>
+      <SmoothScroll>
+        <div className="min-h-screen bg-white dark:bg-black">
+          <MobileNav />
+          <div className="relative min-h-screen">{children}</div>
 
-        <div className="fixed bottom-4 inset-x-0 flex justify-center z-50">
-          <DockNav />
+          <div className="fixed bottom-4 inset-x-0 justify-center z-50 hidden md:flex">
+            <DockNav />
+          </div>
         </div>
-      </div>
+      </SmoothScroll>
     </ThemeProvider>
   );
 }
