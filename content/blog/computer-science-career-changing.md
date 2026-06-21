@@ -7,8 +7,6 @@ published: true
 slug: "computer-science-career-changing"
 ---
 
-# The Computer Science Career We Prepared For Is Changing
-
 Before you panic lemme explain
 
 AI didn't just change how we code. It quietly changed how companies hire, what skills matter, and who gets left behind.
@@ -87,7 +85,9 @@ Startups throw you into the deep end. You're not just writing code, you're ownin
 
 Also, always try to build a personal brand for yourself and keep putting your work out there. Gives you a real edge when a founder or head of engineering looks at your profile. Let's be honest, no one's gonna read through your resume and believe it word for word, cause it's all a bit exaggerated anyway. But if you build real projects and actually show 'em? You'll definitely get noticed.
 
-https://tenor.com/DhGCcCEXWo.gif
+<p align="center">
+  <img src="/blog-images/tenor-cat.gif" alt="Cat meme" />
+</p>
 
 One more thing, "Follow the money"
 
